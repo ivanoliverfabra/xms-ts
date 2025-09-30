@@ -1,6 +1,6 @@
 {
   "name": "xms-ts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "TypeScript implementation of the XMS (exchange metadata standard) with strict parser, fallback parser, and type-safe XMSDoc wrapper.",
   "license": "MIT",
   "author": "Ivan Oliver Fabra <ivan@iofabra.cc>",
