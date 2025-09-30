@@ -1,7 +1,18 @@
 {
-  "extends": "./tsconfig.build.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "outDir": "dist/cjs",
     "module": "CommonJS",
-    "outDir": "dist/cjs"
-  }
+    "target": "ES2019",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "sourceMap": true,
+    "noEmit": false,
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": false,
+    "verbatimModuleSyntax": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
 }
