@@ -1,0 +1,53 @@
+{
+  "name": "xms-ts",
+  "version": "1.0.1",
+  "description": "TypeScript implementation of the XMS (exchange metadata standard) with strict parser, fallback parser, and type-safe XMSDoc wrapper.",
+  "license": "MIT",
+  "author": "Ivan Oliver Fabra <ivan@iofabra.cc>",
+  "homepage": "https://github.com/ivanoliverfabra/xms-ts#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanoliverfabra/xms-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivanoliverfabra/xms-ts/issues"
+  },
+  "keywords": [
+    "xms",
+    "metadata",
+    "parser",
+    "typescript",
+    "serializer",
+    "fallback",
+    "protocol"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build:esm": "tsc -p tsconfig.build.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "test": "bun test",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
