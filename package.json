@@ -27,24 +27,22 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.map"
   ],
   "scripts": {
     "clean": "rimraf dist",
     "build:esm": "tsc -p tsconfig.build.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json && echo {\"type\":\"commonjs\"} > dist/cjs/package.json",
-    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "postbuild:cjs": "echo {\"type\":\"commonjs\"} > dist/cjs/package.json",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run postbuild:cjs",
     "test": "bun test",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build"
