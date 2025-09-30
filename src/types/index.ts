@@ -1,4 +1,5 @@
-export * from "./core"
-export * from "./entries"
-export * from "./fallback"
-export * from "./xms"
+export * from "./core.js"
+export * from "./entries.js"
+export * from "./fallback.js"
+export * from "./xms.js"
+

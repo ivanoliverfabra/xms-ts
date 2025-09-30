@@ -1,5 +1,5 @@
-import type { XMSDocument, XMSErrorDetail, XMSValue } from "./core"
-import type { MetadataEntry } from "./entries"
+import type { XMSDocument, XMSErrorDetail, XMSValue } from "./core.js"
+import type { MetadataEntry } from "./entries.js"
 
 export type FallbackResult<
   D extends Record<string, XMSValue> = Record<string, XMSValue>

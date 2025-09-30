@@ -1,4 +1,4 @@
-import type { XMSErrorDetail, XMSValue } from "./core"
+import type { XMSErrorDetail, XMSValue } from "./core.js"
 
 type ReservedKeyMap = {
   username: string

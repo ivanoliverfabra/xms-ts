@@ -1,5 +1,3 @@
-type Simplify<T> = { [K in keyof T]: T[K] } & {};
-
 type Split<
   S extends string,
   Sep extends string,
@@ -10,7 +8,7 @@ type Split<
   ? [A, ...Split<B, Sep, _Inc<Depth>>]
   : [S];
 
-type _Inc<N extends number> = 
+type _Inc<N extends number> =
   N extends 0 ? 1 : N extends 1 ? 2 : N extends 2 ? 3 : N extends 3 ? 4 : N extends 4 ? 5 :
   N extends 5 ? 6 : N extends 6 ? 7 : N extends 7 ? 8 : N extends 8 ? 9 : N extends 9 ? 10 :
   N extends 10 ? 11 : N extends 11 ? 12 : N extends 12 ? 13 : N extends 13 ? 14 : N extends 14 ? 15 : 15;
@@ -35,7 +33,7 @@ export type ExpandShape<T, Depth extends number = 0> = Depth extends 10
     : T[K];
   } & {};
 
-export type EntriesFromData<T, Prefix extends string = "", Depth extends number = 0> = 
+export type EntriesFromData<T, Prefix extends string = "", Depth extends number = 0> =
   Depth extends 10
   ? { name: `${Prefix}${keyof T & string}`; value: T[keyof T] }
   : {

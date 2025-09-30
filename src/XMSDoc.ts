@@ -1,9 +1,9 @@
-import { fallbackParse, setNested } from "./fallback"
-import { flattenNamespace } from "./fallback/flatten"
-import { parseXMS, toXMS } from "./parser/xms-core"
-import type { EntriesFromData, ExpandShape, ExtractRef, FallbackResult, InferIsFallback, InferVersion, ParseXMS, XMSErrorDetail } from "./types"
-import { XMSParseError, type XMSDocument } from "./types/core"
-import type { MetadataEntry } from "./types/entries"
+import { flattenNamespace } from "./fallback/flatten.js"
+import { fallbackParse, setNested } from "./fallback/index.js"
+import { parseXMS, toXMS } from "./parser/xms-core.js"
+import { XMSParseError, type XMSDocument } from "./types/core.js"
+import type { MetadataEntry } from "./types/entries.js"
+import type { EntriesFromData, ExpandShape, ExtractRef, FallbackResult, InferIsFallback, InferVersion, ParseXMS, XMSErrorDetail } from "./types/index.js"
 
 export class XMSDoc<T extends XMSDocument = XMSDocument> {
   private readonly _doc?: T
@@ -60,12 +60,12 @@ export class XMSDoc<T extends XMSDocument = XMSDocument> {
   } {
     try {
       return new XMSDoc(
-      {
-        version: (version ?? 1) as TVersion,
-        isFallback: false,
-        data: data as ExpandShape<TData>
-      } as any
-    ) as any
+        {
+          version: (version ?? 1) as TVersion,
+          isFallback: false,
+          data: data as ExpandShape<TData>
+        } as any
+      ) as any
     } catch (err) {
       if (strict) throw err
       const fb = fallbackParse(Object.entries(data).map(([k, v]) => ({ name: k, value: String(v) })).join(";"))

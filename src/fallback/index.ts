@@ -1,5 +1,5 @@
-import { parseXMS } from "../parser/xms-core";
-import { XMSParseError, type FallbackResult, type MetadataEntry, type MetadataResult, type ValidXMSPrimitive } from "../types";
+import { parseXMS } from "../parser/xms-core.js";
+import { XMSParseError, type FallbackResult, type MetadataEntry, type MetadataResult, type ValidXMSPrimitive } from "../types/index.js";
 
 function flattenNamespace(
   baseKey: string,

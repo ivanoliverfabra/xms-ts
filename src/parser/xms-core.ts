@@ -1,5 +1,5 @@
-import { type ValidXMSPrimitive, type XMSDocument, XMSParseError } from "../types/core"
-import { splitTokens } from "./tokenizer"
+import { type ValidXMSPrimitive, type XMSDocument, XMSParseError } from "../types/core.js"
+import { splitTokens } from "./tokenizer.js"
 
 const QUOTED = Symbol("quoted-value")
 type QuotedString = string & { [QUOTED]: true }

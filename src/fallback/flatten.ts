@@ -1,4 +1,4 @@
-import type { MetadataEntry } from "../types"
+import type { MetadataEntry } from "../types/index.js"
 
 export function flattenNamespace(
   baseKey: string,
