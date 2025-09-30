@@ -49,7 +49,8 @@ export class XMSDoc<T extends XMSDocument = XMSDocument> {
     TVersion extends number = 1
   >(
     data: TData,
-    version?: TVersion
+    version?: TVersion,
+    strict = true
   ): XMSDoc<{
     version: TVersion
     isFallback: false
@@ -57,13 +58,19 @@ export class XMSDoc<T extends XMSDocument = XMSDocument> {
   }> & {
     entries: EntriesFromData<ExpandShape<TData>>[]
   } {
-    return new XMSDoc(
+    try {
+      return new XMSDoc(
       {
         version: (version ?? 1) as TVersion,
         isFallback: false,
         data: data as ExpandShape<TData>
       } as any
     ) as any
+    } catch (err) {
+      if (strict) throw err
+      const fb = fallbackParse(Object.entries(data).map(([k, v]) => ({ name: k, value: String(v) })).join(";"))
+      return new XMSDoc(undefined, fb) as any
+    }
   }
 
   get isFallback(): InferIsFallback<T> {
